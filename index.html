@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - FamTrack</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --accent: #16a34a;
+            --text-dark: #1f2937;
+            --text-muted: #4b5563;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.2rem;
+        }
+
+        .header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>FamTrack</h1>
+        <p>Consent-Based Family Location Sharing</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <span class="badge">Opt-In Privacy Guarantee</span>
+            <p><strong>Effective Date:</strong> October 6, 2026</p>
+            <p>At <strong>FamTrack</strong>, we believe that location sharing must strictly empower users rather than compromise their privacy. This Privacy Policy details how personal information and device location data are collected, used, processed, and protected within the FamTrack Android application.</p>
+
+            <h2>1. Core Principles of Consent</h2>
+            <p>FamTrack operates strictly on an <strong>opt-in, consent-first architecture</strong>:</p>
+            <ul>
+                <li><strong>Approval-Required Access:</strong> No user can view another person's location without explicit approval. Connection requests must be manually accepted by the target relative.</li>
+                <li><strong>No Self-Approval:</strong> Watchers cannot approve connection requests on behalf of other users under any circumstances.</li>
+                <li><strong>Instant Revocation:</strong> Users can revoke access or tap "Stop Sharing" at any time, instantly removing the watcher from authorized access lists.</li>
+            </ul>
+
+            <h2>2. Information We Collect</h2>
+            <h3>A. Personal Information</h3>
+            <ul>
+                <li><strong>Account Credentials:</strong> We collect your email address and an encrypted password via <strong>Firebase Authentication</strong> to establish your user profile and securely manage your connections.</li>
+            </ul>
+
+            <h3>B. Location Data</h3>
+            <ul>
+                <li><strong>Precise Background & Foreground Location:</strong> FamTrack uses Android's Fused Location Provider API to fetch device geographic coordinates (latitude and longitude).</li>
+                <li><strong>Update Frequency:</strong> Location coordinates are periodically updated (approximately every 20 minutes during active background tracking) and during a final best-effort ping prior to a standard phone shutdown.</li>
+                <li><strong>OpenStreetMap Processing:</strong> Coordinates are mapped using open-source OpenStreetMap (osmdroid) libraries for map visualization.</li>
+            </ul>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the collected data strictly to deliver core app functions:</p>
+            <ul>
+                <li>To authenticate user identity and prevent unauthorized access.</li>
+                <li>To display current and last-known location snapshots to authorized family members.</li>
+                <li>To evaluate security permissions using Firestore database rules, ensuring location reads are allowed only if a user's unique identifier (<code>uid</code>) exists in the target's <code>allowedWatchers</code> list.</li>
+            </ul>
+
+            <h2>4. Third-Party Services</h2>
+            <p>FamTrack integrates trusted third-party infrastructure providers that comply with global data protection standards:</p>
+            <ul>
+                <li><strong>Firebase (Google LLC):</strong> Used for secure user authentication, real-time database storage (Cloud Firestore), and backend cloud infrastructure. [<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>]</li>
+                <li><strong>OpenStreetMap / osmdroid:</strong> Used for rendering map tiles and rendering location pins on the client interface without selling user data. [<a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">OSMF Privacy Policy</a>]</li>
+            </ul>
+
+            <h2>5. Data Access Control & Security Rules</h2>
+            <p>Location data is stored securely in Firebase Cloud Firestore. Access control is enforced at the database level:</p>
+            <ul>
+                <li>A watcher can only read a target user's location document if their <code>uid</code> is explicitly present in that document's <code>allowedWatchers</code> array.</li>
+                <li>When a user taps "Stop Sharing", their watcher's <code>uid</code> is immediately pruned from the array, revoking read permissions instantly.</li>
+            </ul>
+
+            <h2>6. Data Retention and Account Deletion</h2>
+            <p>You maintain complete ownership of your personal data:</p>
+            <ul>
+                <li><strong>Account Deletion:</strong> Initiating "Delete My Account" permanently erases your user profile, stored location history, last-known coordinates, and active permissions from our databases immediately.</li>
+            </ul>
+
+            <h2>7. Children's Privacy</h2>
+            <p>FamTrack requires explicit parental setup and mutual consent when used by minors. The app does not knowingly collect location data from children without explicit connection authorization by a parent or guardian on the child's device.</p>
+
+            <h2>8. Contact Us</h2>
+            <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us at:</p>
+            <p><strong>Email:</strong> support@famtrack.app</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 FamTrack. All rights reserved. | Built with Kotlin & Firebase.
+    </div>
+
+</body>
+</html>
